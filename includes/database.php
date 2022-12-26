@@ -1,8 +1,8 @@
 <?php
 
-include './config.php';
+include 'config.php';
 
-$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_BBDD);
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
