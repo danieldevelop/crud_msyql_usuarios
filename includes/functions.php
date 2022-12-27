@@ -39,7 +39,7 @@ function listarUsuarios() {
             $sexo = '';
         endif;
 
-        // $delURL = "del-user.php?idcod=" . $fila['idcod'];
+
         $table ="<tr>";
             $table.="<td>{$fila['idcod']}</td>";
             $table.="<td>{$fila['rut']}</td>";
@@ -48,15 +48,6 @@ function listarUsuarios() {
             $table.="<td>{$sexo}</td>";
             $table.="<td>{$fila['fchNacimiento']}</td>";
             $table.="<td>{$fila['username']}</td>";
-        //     $table.="<td colspan='2' class='text-center d-flex aling-items-center gap-2'>";
-        //         $table.="<a href='upd-user.php?idcod={$fila['idcod']}' class='btn btn-sm btn-success' title='editar'>";
-        //             $table.="<img src='./img/pencil-square.svg' alt='icon bootstrap' class='img-fluid'>";
-        //         $table.="</a>";
-        //         $table.="<button onclick='confirmDelete($delURL)' class='btn btn-sm btn-danger' title='eliminar'>";
-        //             $table.="<img src='./img/trash.svg' alt='icon bootstrap' class='img-fluid'>";
-        //         $table.="</button>";
-        //     $table.="</td>";
-        // $table.="</tr>";
 
         return $table;
     }
