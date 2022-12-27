@@ -1,3 +1,8 @@
+<?php 
+
+require_once './includes/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -33,19 +38,39 @@
                 <!-- table to show users -->
                 <section class="py-3">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
+                        <table class="table table-sm table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th class="text-uppercase">rut</th>
                                     <th class="text-uppercase">nombre</th>
                                     <th class="text-uppercase">nacionalidad</th>
-                                    <th class="text-uppercase">rut</th>
                                     <th class="text-uppercase">sexo</th>
                                     <th class="text-uppercase">fch. nacimiento</th>
                                     <th class="text-uppercase">usuario</th>
                                     <th colspan="2"></th>
                                 </tr>
                             </thead>
+
+                            <tbody>
+                                <?php if(!existeRegistros()) { ?>
+                                <tr>
+                                    <td colspan="8" class="text-center">No existen registros</td>
+                                </tr>
+
+                                <?php } else { ?>
+                                    <?= listarUsuarios(); ?>
+                                    <td colspan="2" class="text-center">
+                                        <a href="upd-user.php?idcod=<?php echo $fila['idcod']; ?>" class='btn btn-sm btn-success' title='editar'>
+                                            <img src='./img/pencil-square.svg' alt='icon bootstrap' class='img-fluid'>
+                                        </a>
+                                        <a href="javascript:confirmDelete('del-user.php?idcod=<?php echo $fila["idcod"]; ?>')" class='btn btn-sm btn-danger' title='eliminar'>
+                                            <img src='./img/trash.svg' alt='icon bootstrap' class='img-fluid'>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
                         </table>
                     </div>
                 </section>
