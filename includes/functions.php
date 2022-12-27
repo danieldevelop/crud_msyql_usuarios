@@ -28,3 +28,17 @@ function listarUsuarios() {
     return $campos;
 }
 
+
+function buscarUsuario($id) {
+    global $conn;
+
+    $sql ="SELECT u.idcod, u.rut, u.apll, u.nom, u.nacionalidad, u.sexo, u.fchNacimiento, ";
+    $sql.="u.username, u.userpass "; 
+    $sql.="FROM usuario u ";
+    $sql.="WHERE idcod = {$id} ";
+
+    $result = mysqli_query($conn, $sql);
+    $fila = mysqli_fetch_array($result, MYSQLI_BOTH);
+
+    return $fila;
+}
