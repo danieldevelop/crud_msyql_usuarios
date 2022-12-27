@@ -30,4 +30,4 @@ function confirmDelete(delURL)
 const btn_newuser = document.querySelector("#btn-newuser");
 btn_newuser.addEventListener('click', function() {
     window.location = 'add_user.php';
-})
+});
