@@ -91,10 +91,10 @@ $all_usuarios = listarUsuarios();
                                             <td><?= $a_usuario['username']; ?></td>
 
                                             <td colspan="2" class="text-center">
-                                                <a href="upd-user.php?idcod=<?php echo $a_usuario['idcod']; ?>" class='btn btn-sm btn-success' title='editar'>
+                                                <a href="edit_user.php?idcod=<?php echo $a_usuario['idcod']; ?>" class='btn btn-sm btn-success' title='editar'>
                                                     <img src='./img/pencil-square.svg' alt='icon bootstrap' class='img-fluid'>
                                                 </a>
-                                                <a href="javascript:confirmDelete('del-user.php?idcod=<?php echo $a_usuario['idcod']; ?>')" class='btn btn-sm btn-danger' title='eliminar'>
+                                                <a href="javascript:confirmDelete('del_user.php?idcod=<?php echo $a_usuario['idcod']; ?>')" class='btn btn-sm btn-danger' title='eliminar'>
                                                     <img src='./img/trash.svg' alt='icon bootstrap' class='img-fluid'>
                                                 </a>
                                             </td> 
