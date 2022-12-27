@@ -8,8 +8,6 @@ function confirmDelete(delURL)
         cancelButtonColor: '#d33',
         confirmButtonText: "SI",
         cancelButtonText: "NO",
-        // showCloseButton: true,
-        // closeButtonAriaLabel: "Cerrar",
         allowOutsideClick: false
 
     }).then((result) => {
@@ -21,10 +19,15 @@ function confirmDelete(delURL)
                 text: "El registro seleccionado está a salvo!!",
                 confirmButtonColor: '#157347',
                 confirmButtonText: "Aceptar",
-                // showCloseButton: true,
-                // closeButtonAriaLabel: "Cerrar",
                 allowOutsideClick: false
             });
         }
     });
 }
+
+
+
+const btn_newuser = document.querySelector("#btn-newuser");
+btn_newuser.addEventListener('click', function() {
+    window.location = 'add_user.php';
+})
