@@ -3,12 +3,36 @@
 require_once './includes/database.php';
 require_once './includes/functions.php';
 
-if (isset($_GET['idcod'])) {
-    $id = $_GET['idcod'];
-    $a_usuario = buscarUsuario($id); 
-    
-    if(isset($_POST['btn-actualizar'])) {
-        
+$a_usuario = buscarUsuario((int)$_GET['idcod']); // Si no lo convierte a int dara error
+
+if(isset($_POST['btn-actualizar'])) 
+{
+    $id = $_POST['inpId'];
+    $rut = $_POST['inpRut'];
+    $apellido = $_POST['inpApellido'];
+    $nombre = $_POST['inpNombre'];
+    $nacionalidad = $_POST['inpNacionalidad'];
+    $fchNacimiento = $_POST['inpFchNacimiento'];
+    $sexo = (isset($_POST['inpSexo'])) ? $_POST['inpSexo'] : null;
+    $username = $_POST['inpUsername'];
+    $password = $_POST['inpPassword'];
+
+    $sql ="UPDATE usuario SET ";
+    $sql.="rut = '$rut', apll = '$apellido', nom = '$nombre', nacionalidad = '$nacionalidad', sexo = '$sexo', fchNacimiento = '$fchNacimiento', ";
+    $sql.="username = '$username', userpass = '$password' ";
+    $sql.="WHERE idcod = $id ";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        echo '<script>
+            window.alert("Usuario actualizado con exito");
+            window.location.href = "./";
+        </script>';
+    } else {
+        echo '<script>
+            window.alert("Error al actualizar usuario");
+            window.location.href = "./edit_user.php";
+        </script>';
     }
 }
 
@@ -43,6 +67,9 @@ if (isset($_GET['idcod'])) {
         <main class="my-3">
             <div class="container">
                 <form action="<?= htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="row g-3">
+                    <!-- Se mantiene oculto para poder mandar el ID de usuario actual -->
+                    <input type="hidden" name="inpId" value="<?= $a_usuario['idcod'] ?>">
+
                     <div class="col-md-2 my-3">
                         <label for="inpRut" class="form-label fw-semibold">Rut:</label>
                         <input type="text" name="inpRut" id="inpRut" class="form-control form-control-sm" value="<?= $a_usuario['rut'] ?>">
